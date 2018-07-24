@@ -9,20 +9,9 @@
         "js",
         "--sourceMap",
         "--watch",
-        "app.ts"
+        "app.ts",
+        "--module",
+        "commonjs"
     ],
-    "problemMatcher": "$tsc",
-    // "tasks": [
-    //     {            
-    //         "type": "typescript",
-    //         "tsconfig": "tsconfig.json",
-    //         "problemMatcher": [
-    //             "$tsc"
-    //         ],
-    //         "group": {
-    //             "kind": "build",
-    //             "isDefault": true
-    //         }
-    //     }
-    // ]
+    "problemMatcher": "$tsc"    
 }

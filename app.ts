@@ -1,9 +1,13 @@
-function GetAllBooks() {
+import { Book, DamageLogger, Author, Librarian} from './interfaces';
+import { Category } from './enums';
+import { UnitversityLibrarian } from './classes';
+
+function GetAllBooks(): Book[] {
     
     let books = [
-        { id: 1, title: 'Ulyssess', author: 'James Joyes', available: true, category: 'Fiction'},
-        { id: 2, title: 'A farewell to Arms', author: 'Herman', available: false, category: 'Poetry'},
-        { id: 3,  title: 'I know why you sing', author: 'MMAM Joyes', available: true, category: 'Poetry'}
+        { id: 1, title: 'Ulyssess', author: 'James Joyes', available: true, category: Category.Fiction},
+        { id: 2, title: 'A farewell to Arms', author: 'Herman', available: false, category: Category.Poetry},
+        { id: 3,  title: 'I know why you sing', author: 'MMAM Joyes', available: true, category: Category.History}
     ];
 
     return books;
@@ -23,8 +27,6 @@ function LogFirstAvailable(books: any): void {
     console.log('First Available: ', firstAvailable);
 }
 
-enum Category { Biography, Poetry, Fiction, History, Children}
-
 
 function getBooksByCategory(categoryFilter: Category = Category.Fiction): Array<string> {
     console.log('Getting Books in Category : ', Category[categoryFilter])
@@ -33,7 +35,7 @@ function getBooksByCategory(categoryFilter: Category = Category.Fiction): Array<
     const filterdTitles: string[] = [];
 
     for(let currentBook of allBooks) {
-        if(currentBook.category === Category[categoryFilter]) {
+        if(currentBook.category === categoryFilter) {
             filterdTitles.push(currentBook.title);
         }
     }
@@ -47,7 +49,7 @@ function LogBookTitles(titles: string[]): void {
     }
 }
 
-function GetBookById(id: number) {
+function GetBookById(id: number): Book {
     const allBooks = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
@@ -140,5 +142,28 @@ function GetTitles(bookProperty: any): string[] {
     return foundTitles;
 }
 
-let hermanBooks = GetTitles('Herman');
-hermanBooks.forEach(title => console.log('Book By Given Author : ', title));
+// let hermanBooks = GetTitles('Herman');
+// hermanBooks.forEach(title => console.log('Book By Given Author : ', title));
+
+function PrintBook(book: Book): void {
+    console.log("#####", book.title, ' by ', book.author);
+}
+
+// let myBook = {
+//     id: 5,
+//     title: 'Pride and Juridos',
+//     author: 'Augste',
+//     available: true,
+//     category: Category.Fiction,
+//     year: 1202,
+//     copies: 3,
+//     markDamaged: (reason: string) => console.log('Damaged: ', reason);
+// }
+
+// PrintBook(myBook);
+// myBook.markDamaged('missing Back Cover.')
+
+//let favoriteAuthor: Author = {};
+let favoriteLibrarian: Librarian = new UnitversityLibrarian();
+favoriteLibrarian.name = "ABC CDE";
+favoriteLibrarian.assistCustomer('Lynca');

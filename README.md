@@ -13,3 +13,7 @@ Typescript Project Library Manager
     - e.g. GetBookReadForCust(name: String, ...bookIds: number[]){}
     -- GetBookReadForCust('xyz', 10,102,100, 234);
 - Function Overloading available in Typescript.
+#Interface 
+- Contracts that defines types
+- Compiler enforces the contract via type definition
+- Collection of property and methods definition
